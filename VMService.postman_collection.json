@@ -1,0 +1,1368 @@
+{
+	"info": {
+		"_postman_id": "a62d360c-7702-4ba4-8f5f-0fd9f0f06c10",
+		"name": "Vendor Management Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17200379"
+	},
+	"item": [
+		{
+			"name": "Operations",
+			"item": [
+				{
+					"name": "Vendor",
+					"item": [
+						{
+							"name": "Create Vendor",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"DistributorA\",\n    \"contact_details\": \"info@abcdistributors.com\",\n    \"address\": \"123 Main Street, Town, Country\",\n    \"vendor_code\": \"V13580\",\n    \"on_time_delivery_rate\": 95.6,\n    \"quality_rating_avg\": 4.5,\n    \"average_response_time\": 3.1,\n    \"fulfillment_rate\": 96.8\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/vendors/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"vendors",
+										""
+									]
+								},
+								"description": "### Add Vendor\n\nThis endpoint allows the client to add a new vendor to the system.\n\n**Request Body**\n\n- `name` (string, required): The name of the vendor.\n- `contact_details` (string, required): Contact details of the vendor.\n- `address` (string, required): Address of the vendor.\n- `vendor_code` (string, required): Unique code for the vendor.\n- `on_time_delivery_rate` (number, required): Rate of on-time delivery.\n- `quality_rating_avg` (number, required): Average quality rating.\n- `average_response_time` (number, required): Average response time of the vendor.\n- `fulfillment_rate` (number, required): Fulfillment rate of the vendor.\n    \n\n**Response**\n\n```\n{\n    \"message\": \"Vendor created successfully\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"ABC Distributors\",\n        \"contact_details\": \"info@abcdistributors.com\",\n        \"address\": \"123 Main Street, Town, Country\",\n        \"vendor_code\": \"V13579\",\n        \"on_time_delivery_rate\": 95.6,\n        \"quality_rating_avg\": 4.5,\n        \"average_response_time\": 3.1,\n        \"fulfillment_rate\": 96.8\n    }\n}\n\n ```"
+							},
+							"response": [
+								{
+									"name": "Create Vendor",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"ABC Distributors\",\n    \"contact_details\": \"info@abcdistributors.com\",\n    \"address\": \"123 Main Street, Town, Country\",\n    \"vendor_code\": \"V13579\",\n    \"on_time_delivery_rate\": 95.6,\n    \"quality_rating_avg\": 4.5,\n    \"average_response_time\": 3.1,\n    \"fulfillment_rate\": 96.8\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/api/vendors/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"vendors",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:37:02 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "300"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor created successfully\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"ABC Distributors\",\n        \"contact_details\": \"info@abcdistributors.com\",\n        \"address\": \"123 Main Street, Town, Country\",\n        \"vendor_code\": \"V13579\",\n        \"on_time_delivery_rate\": 95.6,\n        \"quality_rating_avg\": 4.5,\n        \"average_response_time\": 3.1,\n        \"fulfillment_rate\": 96.8\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Vendor Performance",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/vendors/6/performance",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"vendors",
+										"6",
+										"performance"
+									]
+								},
+								"description": "The endpoint retrieves the performance data for a specific vendor with ID.\n\n**Response**\n\n``` json\n{\n    \"message\": \"Performance metric data found\",\n    \"data\": {\n        \"vendor_id\": 6,\n        \"on_time_delivery_rate\": 50,\n        \"quality_rating_avg\": 3,\n        \"average_response_time\": 5400,\n        \"fulfillment_rate\": 100\n    }\n}\n\n ```"
+							},
+							"response": [
+								{
+									"name": "Vendor Performance",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/api/vendors/6/performance",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"vendors",
+												"6",
+												"performance"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 06:05:56 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "176"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Performance metric data found\",\n    \"data\": {\n        \"vendor_id\": 6,\n        \"on_time_delivery_rate\": 50,\n        \"quality_rating_avg\": 3,\n        \"average_response_time\": 5400,\n        \"fulfillment_rate\": 100\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Vendors",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/api/vendors/6/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"vendors",
+										"6",
+										""
+									]
+								},
+								"description": "### GET /api/vendors/{vendor_id}/\n\nThis endpoint retrieves information about a specific vendor with the ID or for all the vendors if vendor_id not provided.\n\n#### Request\n\nNo request body is required for this endpoint.\n\n#### Response\n\nThe response will be a JSON object with the following schema:\n\n``` json\n{\n    \"message\": \"Vendor data found\",\n    \"data\": [\n        {\n            \"id\": 6,\n            \"name\": \"ABC Distributors\",\n            \"contact_details\": \"info@abcdistributors.com\",\n            \"address\": \"123 Main Street, Town, Country\",\n            \"vendor_code\": \"V13579\",\n            \"on_time_delivery_rate\": 95.6,\n            \"quality_rating_avg\": 4.5,\n            \"average_response_time\": 3.1,\n            \"fulfillment_rate\": 96.8\n        }\n    ]\n}\nor \n{\n    \"message\": \"Vendor data found\",\n    \"data\": [\n        {\n            \"id\": 6,\n            \"name\": \"ABC Distributors\",\n            \"contact_details\": \"info@abcdistributors.com\",\n            \"address\": \"123 Main Street, Town, Country\",\n            \"vendor_code\": \"V13579\",\n            \"on_time_delivery_rate\": 95.6,\n            \"quality_rating_avg\": 4.5,\n            \"average_response_time\": 3.1,\n            \"fulfillment_rate\": 96.8\n        }\n    ]\n}\n\n ```"
+							},
+							"response": [
+								{
+									"name": "Fetch Vendors - All",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/api/vendors/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"vendors",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:38:09 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "292"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor data found\",\n    \"data\": [\n        {\n            \"id\": 6,\n            \"name\": \"ABC Distributors\",\n            \"contact_details\": \"info@abcdistributors.com\",\n            \"address\": \"123 Main Street, Town, Country\",\n            \"vendor_code\": \"V13579\",\n            \"on_time_delivery_rate\": 95.6,\n            \"quality_rating_avg\": 4.5,\n            \"average_response_time\": 3.1,\n            \"fulfillment_rate\": 96.8\n        }\n    ]\n}"
+								},
+								{
+									"name": "Fetch Vendors - Single",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/api/vendors/6/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"vendors",
+												"6",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:38:40 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "290"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor data found\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"ABC Distributors\",\n        \"contact_details\": \"info@abcdistributors.com\",\n        \"address\": \"123 Main Street, Town, Country\",\n        \"vendor_code\": \"V13579\",\n        \"on_time_delivery_rate\": 95.6,\n        \"quality_rating_avg\": 4.5,\n        \"average_response_time\": 3.1,\n        \"fulfillment_rate\": 96.8\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Vendor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"ABC Distributors\",\n    \"contact_details\": \"info@abcdistributors.com\",\n    \"address\": \"Updated address\",\n    \"vendor_code\": \"V13579\",\n    \"on_time_delivery_rate\": 95.6,\n    \"quality_rating_avg\": 4.5,\n    \"average_response_time\": 3.1,\n    \"fulfillment_rate\": 96.8\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/vendors/6/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"vendors",
+										"6",
+										""
+									]
+								},
+								"description": "### Update Vendor Details\n\nThis endpoint allows the client to update the details of a specific vendor.\n\n#### Request Body\n\n- `name` (string, optional): The name of the vendor.\n- `contact_details` (string, optional): Contact details of the vendor.\n- `address` (string, optional): Address of the vendor.\n- `vendor_code` (string, optional): Vendor code for identification.\n- `on_time_delivery_rate` (number, optional): Rate of on-time delivery.\n- `quality_rating_avg` (number, optional): Average quality rating.\n- `average_response_time` (number, optional): Average response time.\n- `fulfillment_rate` (number, optional): Rate of fulfillment.\n    \n\n#### Response\n\nThe response will be a JSON object with the following schema:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"object\",\n            \"properties\": {\n                \"id\": {\n                    \"type\": \"number\"\n                },\n                \"name\": {\n                    \"type\": \"string\"\n                },\n                \"contact_details\": {\n                    \"type\": \"string\"\n                },\n                \"address\": {\n                    \"type\": \"string\"\n                },\n                \"vendor_code\": {\n                    \"type\": \"string\"\n                },\n                \"on_time_delivery_rate\": {\n                    \"type\": \"number\"\n                },\n                \"quality_rating_avg\": {\n                    \"type\": \"number\"\n                },\n                \"average_response_time\": {\n                    \"type\": \"number\"\n                },\n                \"fulfillment_rate\": {\n                    \"type\": \"number\"\n                }\n            }\n        }\n    }\n}\n\n ```"
+							},
+							"response": [
+								{
+									"name": "Update Vendor",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"ABC Distributors\",\n    \"contact_details\": \"info@abcdistributors.com\",\n    \"address\": \"Updated address\",\n    \"vendor_code\": \"V13579\",\n    \"on_time_delivery_rate\": 95.6,\n    \"quality_rating_avg\": 4.5,\n    \"average_response_time\": 3.1,\n    \"fulfillment_rate\": 96.8\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/api/vendors/6/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"vendors",
+												"6",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:42:33 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "285"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor updated successfully\",\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"ABC Distributors\",\n        \"contact_details\": \"info@abcdistributors.com\",\n        \"address\": \"Updated address\",\n        \"vendor_code\": \"V13579\",\n        \"on_time_delivery_rate\": 95.6,\n        \"quality_rating_avg\": 4.5,\n        \"average_response_time\": 3.1,\n        \"fulfillment_rate\": 96.8\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Vendor",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/api/vendors/6/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"vendors",
+										"6",
+										""
+									]
+								},
+								"description": "### Delete Vendor\n\nDeletes a specific vendor from the system.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- `message` (string, required): A message indicating the outcome of the request.\n- `data` (null): This field will be null for a successful deletion.\n    \n\n#### JSON Schema\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"null\"\n        }\n    },\n    \"required\": [\"message\", \"data\"]\n}\n\n ```"
+							},
+							"response": [
+								{
+									"name": "Delete Vendor",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/api/vendors/6/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"vendors",
+												"6",
+												""
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:42:55 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "53"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Vendor deleted successfully\",\n    \"data\": null\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Purchase Order",
+					"item": [
+						{
+							"name": "Create Purchase Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"po_number\": \"PO6\",\n    \"vendor\": 6,\n    \"order_date\": \"2024-04-28 08:00:00.000000\",\n    \"expected_delivery_date\": \"2024-05-05 08:00:00.000000\",\n    \"items\": [\n        {\n            \"name\": \"Item 1\",\n            \"quantity\": 10,\n            \"unit_price\": 20.0\n        },\n        {\n            \"name\": \"Item 2\",\n            \"quantity\": 5,\n            \"unit_price\": 15.0\n        }\n    ],\n    \"quantity\": 15,\n    \"status\": \"pending\",\n    \"quality_rating\": null,\n    \"issue_date\": \"2024-04-28 08:00:00.000000\",\n    \"acknowledgment_date\": null,\n    \"deleted_on\": null\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/purchase_orders/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"purchase_orders",
+										""
+									]
+								},
+								"description": "The endpoint makes an HTTP POST request to create a new purchase order.\n\n**Request Body**\n\n- po_number (string, required): The unique purchase order number.\n    \n- vendor (number, required):The ID of the vendor associated with the purchase order.\n    \n- order_date (string, required): The date and time when the purchase order was created.\n    \n- expected_delivery_date (string, required): The expected delivery date of the items in the purchase order.\n    \n- items (array, required):\n    \n    - name (string): The name of the first item.\n        \n    - quantity (number): The quantity of the first item.\n        \n    - unit_price (number): The unit price of the first item.\n        \n    - name (string): The name of the second item.\n        \n    - quantity (number): The quantity of the second item.\n        \n    - unit_price (number): The unit price of the second item.\n        \n- quantity (number, required): The total quantity of all items in the purchase order.\n    \n- status (string, required): The status of the purchase order.\n    \n- quality_rating (number): The quality rating associated with the purchase order (if available).\n    \n- issue_date (string, required): The date and time when the purchase order was issued.\n    \n- acknowledgment_date (string): null - The date and time when the purchase order was acknowledged (if available)."
+							},
+							"response": [
+								{
+									"name": "Create Purchase Order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"po_number\": \"PO6\",\n    \"vendor\": 6,\n    \"order_date\": \"2024-04-28 08:00:00.000000\",\n    \"expected_delivery_date\": \"2024-05-05 08:00:00.000000\",\n    \"items\": [\n        {\n            \"name\": \"Item 1\",\n            \"quantity\": 10,\n            \"unit_price\": 20.0\n        },\n        {\n            \"name\": \"Item 2\",\n            \"quantity\": 5,\n            \"unit_price\": 15.0\n        }\n    ],\n    \"quantity\": 15,\n    \"status\": \"pending\",\n    \"quality_rating\": null,\n    \"issue_date\": \"2024-04-28 08:00:00.000000\",\n    \"acknowledgment_date\": null,\n    \"deleted_on\": null\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/api/purchase_orders/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"purchase_orders",
+												""
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:48:08 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "455"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase order created successfully\",\n    \"data\": {\n        \"id\": 10,\n        \"po_number\": \"PO6\",\n        \"vendor_id\": 6,\n        \"order_date\": \"2024-04-28 08:00:00.000000\",\n        \"expected_delivery_date\": \"2024-05-05 08:00:00.000000\",\n        \"actual_delivery_date\": null,\n        \"items\": [\n            {\n                \"name\": \"Item 1\",\n                \"quantity\": 10,\n                \"unit_price\": 20\n            },\n            {\n                \"name\": \"Item 2\",\n                \"quantity\": 5,\n                \"unit_price\": 15\n            }\n        ],\n        \"quantity\": 15,\n        \"status\": \"pending\",\n        \"quality_rating\": null,\n        \"issue_date\": \"2024-04-28 08:00:00.000000\",\n        \"acknowledgment_date\": null\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Acknowledge Purchase Order",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"acknowledgment_date\": \"2024-04-28 10:00:00.000000\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/purchase_orders/10/acknowledge/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"purchase_orders",
+										"10",
+										"acknowledge",
+										""
+									]
+								},
+								"description": "### POST /api/purchase_orders/{po_id}/acknowledge/\n\nThis endpoint is used to acknowledge a purchase order with the specified ID.\n\n#### Request Body\n\n- acknowledgment_date (string, required): The date of acknowledgment.\n    \n\n#### Response\n\nThe response for this request is in JSON format and follows the schema below:\n\n``` json\n{\n    \"type\": \"object\",\n    \"properties\": {\n        \"message\": {\n            \"type\": \"string\"\n        },\n        \"data\": {\n            \"type\": \"null\"\n        }\n    }\n}\n\n ```\n\nThe response includes a message field with a string value and a data field with a null value."
+							},
+							"response": [
+								{
+									"name": "Acknowledge Purchase Order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"acknowledgment_date\": \"2024-04-28 10:00:00.000000\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/api/purchase_orders/10/acknowledge/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"purchase_orders",
+												"10",
+												"acknowledge",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:49:06 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "66"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase order acknowledged successfully\",\n    \"data\": null\n}"
+								}
+							]
+						},
+						{
+							"name": "Fetch Purchase Order",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{local}}/api/purchase_orders/10/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"purchase_orders",
+										"10",
+										""
+									]
+								},
+								"description": "\n### Retrieve Purchase Order Details\n\nThis endpoint retrieves the details of a specific purchase order by making a GET request to the specified URL.\n\n#### Request\nNo request body is required for this request.\n\n- URL parameter:\n  - `id` (integer): The unique identifier of the purchase order to be retrieved.\n\n#### Response\nThe response will be a JSON object with the following schema:\n\n```json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"po_number\": \"string\",\n    \"vendor_id\": \"integer\",\n    \"order_date\": \"string\",\n    \"expected_delivery_date\": \"string\",\n    \"actual_delivery_date\": \"string\",\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"quantity\": \"integer\",\n        \"unit_price\": \"integer\"\n      }\n    ],\n    \"quantity\": \"integer\",\n    \"status\": \"string\",\n    \"quality_rating\": \"integer\",\n    \"issue_date\": \"string\",\n    \"acknowledgment_date\": \"string\"\n  }\n}\n```\nThe `data` object contains the details of the purchase order, including its unique identifier, purchase order number, vendor ID, order date, expected delivery date, actual delivery date, items included in the order, quantity, status, quality rating, issue date, and acknowledgment date.\n\n#### Example\n```json\n{\n  \"message\": \"\",\n  \"data\": {\n    \"id\": 0,\n    \"po_number\": \"\",\n    \"vendor_id\": 0,\n    \"order_date\": \"\",\n    \"expected_delivery_date\": \"\",\n    \"actual_delivery_date\": null,\n    \"items\": [\n      {\n        \"name\": \"\",\n        \"quantity\": 0,\n        \"unit_price\": 0\n      }\n    ],\n    \"quantity\": 0,\n    \"status\": \"\",\n    \"quality_rating\": null,\n    \"issue_date\": \"\",\n    \"acknowledgment_date\": \"\"\n  }\n}\n```\n"
+							},
+							"response": [
+								{
+									"name": "Fetch Purchase Order - All",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/api/purchase_orders/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"purchase_orders",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:49:35 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "463"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase orders found\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"po_number\": \"PO6\",\n            \"vendor_id\": 6,\n            \"order_date\": \"2024-04-28T13:30:00+05:30\",\n            \"expected_delivery_date\": \"2024-05-05T13:30:00+05:30\",\n            \"actual_delivery_date\": null,\n            \"items\": [\n                {\n                    \"name\": \"Item 1\",\n                    \"quantity\": 10,\n                    \"unit_price\": 20\n                },\n                {\n                    \"name\": \"Item 2\",\n                    \"quantity\": 5,\n                    \"unit_price\": 15\n                }\n            ],\n            \"quantity\": 15,\n            \"status\": \"pending\",\n            \"quality_rating\": null,\n            \"issue_date\": \"2024-04-28T13:30:00+05:30\",\n            \"acknowledgment_date\": \"2024-04-28T15:30:00+05:30\"\n        }\n    ]\n}"
+								},
+								{
+									"name": "Fetch Purchase Order - Single",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{local}}/api/purchase_orders/10/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"purchase_orders",
+												"10",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:50:13 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "460"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase order found\",\n    \"data\": {\n        \"id\": 10,\n        \"po_number\": \"PO6\",\n        \"vendor_id\": 6,\n        \"order_date\": \"2024-04-28T13:30:00+05:30\",\n        \"expected_delivery_date\": \"2024-05-05T13:30:00+05:30\",\n        \"actual_delivery_date\": null,\n        \"items\": [\n            {\n                \"name\": \"Item 1\",\n                \"quantity\": 10,\n                \"unit_price\": 20\n            },\n            {\n                \"name\": \"Item 2\",\n                \"quantity\": 5,\n                \"unit_price\": 15\n            }\n        ],\n        \"quantity\": 15,\n        \"status\": \"pending\",\n        \"quality_rating\": null,\n        \"issue_date\": \"2024-04-28T13:30:00+05:30\",\n        \"acknowledgment_date\": \"2024-04-28T15:30:00+05:30\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Update Purchase Order",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"po_number\": \"PO7\",\n    \"vendor\": 6,\n    \"quality_rating\": 4,\n    \"status\": \"completed\"\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/purchase_orders/11/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"purchase_orders",
+										"11",
+										""
+									]
+								},
+								"description": "### Update Purchase Order\n\nThis endpoint allows the client to update a specific purchase order by sending an HTTP PUT request to the specified URL.\n\n#### Request Body\n\n- po_number (string): The unique purchase order number.\n    \n- vendor (number):The ID of the vendor associated with the purchase order.\n    \n- order_date (string): The date and time when the purchase order was created.\n    \n- expected_delivery_date (string): The expected delivery date of the items in the purchase order.\n    \n- items (array):\n    \n    - name (string): The name of the first item.\n        \n    - quantity (number): The quantity of the first item.\n        \n    - unit_price (number): The unit price of the first item.\n        \n    - name (string): The name of the second item.\n        \n    - quantity (number): The quantity of the second item.\n        \n    - unit_price (number): The unit price of the second item.\n        \n- quantity (number): The total quantity of all items in the purchase order.\n    \n- status (string): The status of the purchase order.\n    \n- quality_rating (number): The quality rating associated with the purchase order (if available).\n    \n- issue_date (string): The date and time when the purchase order was issued.\n    \n- acknowledgment_date (string): null - The date and time when the purchase order was acknowledged (if available).\n    \n\n#### Response\n\nThe response will be a JSON object with the following schema:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"id\": \"integer\",\n    \"po_number\": \"string\",\n    \"vendor_id\": \"integer\",\n    \"order_date\": \"string\",\n    \"expected_delivery_date\": \"string\",\n    \"actual_delivery_date\": \"string\",\n    \"items\": [\n      {\n        \"name\": \"string\",\n        \"quantity\": \"integer\",\n        \"unit_price\": \"integer\"\n      }\n    ],\n    \"quantity\": \"integer\",\n    \"status\": \"string\",\n    \"quality_rating\": \"integer\",\n    \"issue_date\": \"string\",\n    \"acknowledgment_date\": \"string\"\n  }\n}\n\n ```\n\nThe `message` field provides additional information about the status of the request, while the `data` field contains the updated purchase order details."
+							},
+							"response": [
+								{
+									"name": "Update Purchase Order",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"po_number\": \"PO6\",\n    \"vendor\": 6,\n    \"status\": \"completed\"\n}\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/api/purchase_orders/10/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"purchase_orders",
+												"10",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:51:41 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "501"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase order updated successfully\",\n    \"data\": {\n        \"id\": 10,\n        \"po_number\": \"PO6\",\n        \"vendor_id\": 6,\n        \"order_date\": \"2024-04-28T13:30:00+05:30\",\n        \"expected_delivery_date\": \"2024-05-05T13:30:00+05:30\",\n        \"actual_delivery_date\": \"2024-04-29T05:51:39.400055\",\n        \"items\": [\n            {\n                \"name\": \"Item 1\",\n                \"quantity\": 10,\n                \"unit_price\": 20\n            },\n            {\n                \"name\": \"Item 2\",\n                \"quantity\": 5,\n                \"unit_price\": 15\n            }\n        ],\n        \"quantity\": 15,\n        \"status\": \"completed\",\n        \"quality_rating\": null,\n        \"issue_date\": \"2024-04-28T13:30:00+05:30\",\n        \"acknowledgment_date\": \"2024-04-28T15:30:00+05:30\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete Purchase Order",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/api/purchase_orders/10/",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"api",
+										"purchase_orders",
+										"10",
+										""
+									]
+								},
+								"description": "### Delete Purchase Order\n\nThis endpoint is used to delete a specific purchase order.\n\n#### Request Body\n\nThis request does not require a request body.\n\n#### Response\n\n- Content-Type: application/json\n- Schema:\n    \n    ``` json\n      {\n        \"type\": \"object\",\n        \"properties\": {\n          \"message\": {\n            \"type\": \"string\"\n          },\n          \"data\": {\n            \"type\": \"null\"\n          }\n        }\n      }\n    \n     ```\n    \n- Description: This endpoint returns a JSON response with a message field and a data field. The message field contains a string value, and the data field is set to null."
+							},
+							"response": [
+								{
+									"name": "Delete Purchase Order",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{local}}/api/purchase_orders/10/",
+											"host": [
+												"{{local}}"
+											],
+											"path": [
+												"api",
+												"purchase_orders",
+												"10",
+												""
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Date",
+											"value": "Mon, 29 Apr 2024 05:57:57 GMT"
+										},
+										{
+											"key": "Server",
+											"value": "WSGIServer/0.2 CPython/3.10.12"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Allow",
+											"value": "GET, POST, PUT, DELETE, HEAD, OPTIONS"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Length",
+											"value": "61"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Purchase order deleted successfully\",\n    \"data\": null\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "authorize",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"platform_code\": \"8a650aae-cf0d-4a47-90e5-bbe7b0a6d9a9\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/api/authorize",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"authorize"
+							]
+						},
+						"description": "This endpoint is used to authorize access to the API. The HTTP POST request should be made to /auth/api/authorize with a payload in raw request body type containing the platform_code.\n\n### Request Body\n\n- platform_code (string, required): The platform code for authorization.\n    \n\n### Response\n\nThe response for this request is a JSON object with the following schema:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"access_token\": \"string\",\n    \"refresh_token\": \"string\"\n  }\n}\n\n ```"
+					},
+					"response": [
+						{
+							"name": "authorize",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"platform_code\": \"8a650aae-cf0d-4a47-90e5-bbe7b0a6d9a9\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/auth/api/authorize",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"authorize"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 29 Apr 2024 03:15:00 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "476"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Access granted\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiOGE2NTBhYWUtY2YwZC00YTQ3LTkwZTUtYmJlN2IwYTZkOWE5IiwiZXhwIjoxNzE0MzYyMzAwLCJpYXQiOjE3MTQzNjA1MDB9._nB0A0QvFMPJgiPf3RkxwxZRwyaGY7Qpip80Obv01RU\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiOGE2NTBhYWUtY2YwZC00YTQ3LTkwZTUtYmJlN2IwYTZkOWE5IiwiZXhwIjoxNzE0MzY0MTAwLCJpYXQiOjE3MTQzNjA1MDB9.Ot8zYQpfTGCZ16JsudR_yJWzso5pPmteFYxymPkvBW4\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "regenerate-token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiOGE2NTBhYWUtY2YwZC00YTQ3LTkwZTUtYmJlN2IwYTZkOWE5IiwiZXhwIjoxNzE0MzY4NzYzLCJpYXQiOjE3MTQzNjUxNjN9.4AE12HJGfYzbvF_8576XavYvHqy8THrx_C6VWAqhe3c\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local}}/auth/api/regenerate-token",
+							"host": [
+								"{{local}}"
+							],
+							"path": [
+								"auth",
+								"api",
+								"regenerate-token"
+							]
+						},
+						"description": "### Regenerate Token\n\nThis endpoint is used to regenerate a new access token using a refresh token.\n\n#### Request\n\n- Method: POST\n- URL: `/auth/api/regenerate-token`\n    \n- Body:\n    - refresh_token (string, required): The refresh token used to regenerate the access token.\n\n#### Response\n\nThe response for this request will be a JSON object with the following properties:\n\n``` json\n{\n  \"message\": \"string\",\n  \"data\": {\n    \"access_token\": \"string\",\n    \"refresh_token\": \"string\"\n  }\n}\n\n ```\n\nThe `message` property may contain additional information about the response, while the `data` object will contain the regenerated `access_token` and `refresh_token`."
+					},
+					"response": [
+						{
+							"name": "regenerate-token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiOGE2NTBhYWUtY2YwZC00YTQ3LTkwZTUtYmJlN2IwYTZkOWE5IiwiZXhwIjoxNzE0MzY4NzYzLCJpYXQiOjE3MTQzNjUxNjN9.4AE12HJGfYzbvF_8576XavYvHqy8THrx_C6VWAqhe3c\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{local}}/auth/api/regenerate-token",
+									"host": [
+										"{{local}}"
+									],
+									"path": [
+										"auth",
+										"api",
+										"regenerate-token"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Mon, 29 Apr 2024 04:32:57 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.10.12"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "492"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Token regenerated successfully\",\n    \"data\": {\n        \"access_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiOGE2NTBhYWUtY2YwZC00YTQ3LTkwZTUtYmJlN2IwYTZkOWE5IiwiZXhwIjoxNzE0MzY2OTc3LCJpYXQiOjE3MTQzNjUxNzd9.m3sBtK5_OGJVNHWU1Hw5jJcqQ9ZOvYwhkkZC7trvHF0\",\n        \"refresh_token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiOGE2NTBhYWUtY2YwZC00YTQ3LTkwZTUtYmJlN2IwYTZkOWE5IiwiZXhwIjoxNzE0MzY4Nzc3LCJpYXQiOjE3MTQzNjUxNzd9.fhibdFo3uLSb9oUIDkEKlvH8hlxJ6uYGiwS8_ZzGOGQ\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwbGF0Zm9ybV9jb2RlIjoiOGE2NTBhYWUtY2YwZC00YTQ3LTkwZTUtYmJlN2IwYTZkOWE5IiwiZXhwIjoxNzE0NDAzOTc0LCJpYXQiOjE3MTQ0MDIxNzR9.BVcv9pJOZ73JNh1eBB2Gt1lSz1n6Pg1nFIP6EMyUzpg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "platform_code",
+			"value": "8a650aae-cf0d-4a47-90e5-bbe7b0a6d9a9",
+			"type": "string"
+		},
+		{
+			"key": "api_key",
+			"value": "3f92f904-7d97-4e6a-a6b6-ad92b03d2227",
+			"type": "string"
+		}
+	]
+}
